@@ -1,17 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Agro Assistance</title>
-
-    <!-- Link to Main CSS (if you want to maintain global styles) -->
     <link rel="stylesheet" href="assets/css/main.css"> 
-
-    <!-- Link to Login Page Specific CSS -->
     <link rel="stylesheet" href="assets/css/login.css"> 
-
-    <!-- FontAwesome Icons (for social buttons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -62,9 +56,123 @@
             </div>
         </div>
     </div>
-
-    <!-- JavaScript for Login Page -->
     <script src="assets/js/login.js"></script>
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | Agro Assistance</title>
+
+  <!-- Main & Login CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" placeholder="Name" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+
+    <div class="form-container sign-in-container">
+      <form action="#">
+        <h1>Sign in</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+
+          <!-- Google Sign-In Button -->
+          <div id="g_id_onload"
+            data-client_id="941044861596-sp41c48dhbj357sh0kirutvkqjn7imtt.apps.googleusercontent.com"
+            data-context="signin"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false">
+          </div>
+
+          <div class="g_id_signin"
+            data-type="standard"
+            data-shape="pill"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="left">
+          </div>
+
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your account</span>
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <a href="#">Forgot your password?</a>
+        <button>Sign In</button>
+
+        <div id="nameDisplay" style="margin-top: 1rem; font-weight: bold;"></div>
+      </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Enter your personal details and start your journey with us</p>
+          <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Scripts -->
+  <script src="assets/js/login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+  <!-- Google Sign-In Handler -->
+  <script>
+    function handleCredentialResponse(response) {
+      const data = jwt_decode(response.credential);
+      const nameDisplay = document.getElementById("nameDisplay");
+
+      nameDisplay.innerHTML = `Hello, ${data.name} (${data.email}) <br/>`;
+
+      // Optional: Add profile picture
+      const pic = document.createElement("img");
+      pic.src = data.picture;
+      pic.style.width = "40px";
+      pic.style.borderRadius = "50%";
+      pic.style.marginTop = "10px";
+      nameDisplay.appendChild(pic);
+
+      console.log("Google User Info:", data);
+
+      // Optional redirect
+      // window.location.href = "/dashboard.html";
+    }
+  </script>
 </body>
 </html>

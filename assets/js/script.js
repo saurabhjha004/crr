@@ -11,28 +11,31 @@ document.addEventListener("DOMContentLoaded", function () {
       profileDiv.id = "userProfile";
       profileDiv.style.display = "flex";
       profileDiv.style.alignItems = "center";
-      profileDiv.style.gap = "8px";
-      profileDiv.style.color = "#fff";
+      profileDiv.style.gap = "12px";
+      profileDiv.style.marginLeft = "auto"; // Push to right
+      profileDiv.style.color = "#000"; // Assuming dark text on white bg
   
       // Profile Picture
       const img = document.createElement("img");
       img.src = user.picture || "https://via.placeholder.com/40";
       img.alt = "Profile";
-      img.style.width = "32px";
-      img.style.height = "32px";
+      img.style.width = "36px";
+      img.style.height = "36px";
       img.style.borderRadius = "50%";
+      img.style.objectFit = "cover";
   
       // Name
       const name = document.createElement("span");
       name.textContent = user.name;
+      name.style.fontWeight = "bold";
   
       // Logout button
       const logoutBtn = document.createElement("button");
       logoutBtn.textContent = "Logout";
-      logoutBtn.style.padding = "4px 8px";
-      logoutBtn.style.background = "transparent";
+      logoutBtn.style.padding = "6px 10px";
+      logoutBtn.style.background = "#4CAF50";
       logoutBtn.style.color = "#fff";
-      logoutBtn.style.border = "1px solid #fff";
+      logoutBtn.style.border = "none";
       logoutBtn.style.borderRadius = "4px";
       logoutBtn.style.cursor = "pointer";
   
@@ -41,16 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
         location.reload();
       });
   
-      // Append to header/nav
+      // Append to profile div
       profileDiv.appendChild(img);
       profileDiv.appendChild(name);
       profileDiv.appendChild(logoutBtn);
   
-      const header = document.querySelector("header") || document.body;
-      header.appendChild(profileDiv);
+      // Append to navbar container (replace this line as needed)
+      const navContainer = document.querySelector("nav") || document.body;
+      navContainer.appendChild(profileDiv);
     } else {
       // Show login if not logged in
       if (loginBtn) loginBtn.style.display = "inline-block";
     }
   });
-    
+  

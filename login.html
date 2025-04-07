@@ -22,9 +22,21 @@
       <form action="#">
         <h1>Create Account</h1>
         <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          <div id="g_id_onload"
+            data-client_id="941044861596-sp41c48dhbj357sh0kirutvkqjn7imtt.apps.googleusercontent.com"
+            data-context="signin"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false">
+          </div>
+
+          <div class="g_id_signin"
+            data-type="standard"
+            data-shape="pill"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="left">
+          </div>
         </div>
         <span>or use your email for registration</span>
         <input type="text" placeholder="Name" />
@@ -38,8 +50,6 @@
       <form action="#">
         <h1>Sign in</h1>
         <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-
           <!-- Google Sign-In Button -->
           <div id="g_id_onload"
             data-client_id="941044861596-sp41c48dhbj357sh0kirutvkqjn7imtt.apps.googleusercontent.com"
@@ -56,8 +66,6 @@
             data-size="large"
             data-logo_alignment="left">
           </div>
-
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <span>or use your account</span>
         <input type="email" placeholder="Email" />
@@ -93,23 +101,25 @@
   <script>
     function handleCredentialResponse(response) {
       const data = jwt_decode(response.credential);
+  
+      // Save user data to localStorage
+      localStorage.setItem("user", JSON.stringify(data));
+  
+      // Optional: Show greeting on login page (for debugging)
       const nameDisplay = document.getElementById("nameDisplay");
-
       nameDisplay.innerHTML = `Hello, ${data.name} (${data.email}) <br/>`;
-
-      // Optional: Add profile picture
+  
       const pic = document.createElement("img");
       pic.src = data.picture;
       pic.style.width = "40px";
       pic.style.borderRadius = "50%";
       pic.style.marginTop = "10px";
       nameDisplay.appendChild(pic);
-
+  
       console.log("Google User Info:", data);
-
-      // Optional redirect
-      // window.location.href = "/dashboard.html";
+  
+      // Redirect to your main page
+      window.location.href = "index.html";
     }
   </script>
-</body>
-</html>
+  

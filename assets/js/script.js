@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       navContainer.appendChild(profileDiv);
     } else {
       // Show login if not logged in
-      if (loginBtn) loginBtn.style.display = "inline-block";
+      if (loginBtn) loginBtn.style.display = "";
     }
   });
   

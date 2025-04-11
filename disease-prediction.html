@@ -17,7 +17,6 @@
             overflow: hidden;
         }
 
-        /* Animated Background */
         .animated-bg {
             position: absolute;
             width: 100%;
@@ -28,7 +27,6 @@
             background: linear-gradient(to bottom, #d4edb3, #eaf4d3, #ffffff);
         }
 
-        /* Floating Leaves Animation */
         .leaf {
             position: absolute;
             width: 50px;
@@ -38,7 +36,6 @@
             opacity: 0.7;
         }
 
-        /* Growing Plant */
         .plant {
             position: absolute;
             bottom: 0;
@@ -89,6 +86,30 @@
             margin-top: 15px;
             font-weight: bold;
         }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        #streamlit-ui {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        #streamlit-ui button {
+            margin-top: 15px;
+            width: auto;
+        }
     </style>
 </head>
 <body>
@@ -103,15 +124,22 @@
     <!-- Growing Plant -->
     <div class="plant"></div>
 
-    <div class="container">
+    <!-- Main UI -->
+    <div class="container" id="main-ui">
         <h2>Disease Prediction</h2>
         <input type="file" id="file-upload" accept="image/*">
-        <button id="predict-btn">Predict Disease</button>
+        <button onclick="showStreamlit()">Predict Disease</button>
         <div id="prediction-result"></div>
     </div>
-    
+
+    <!-- Streamlit Iframe -->
+    <div id="streamlit-ui">
+        <iframe src="https://crop-disease-detection.streamlit.app/"></iframe>
+        <button onclick="goBack()">🔙 Back</button>
+    </div>
+
+    <!-- Animations -->
     <script>
-        // Floating Leaves Animation
         document.querySelectorAll('.leaf').forEach(leaf => {
             anime({
                 targets: leaf,
@@ -125,7 +153,6 @@
             });
         });
 
-        // Growing Plant Animation
         anime({
             targets: '.plant',
             opacity: [0, 1],
@@ -133,7 +160,19 @@
             duration: 3000,
             easing: 'easeInOutSine'
         });
+
+        function showStreamlit() {
+            document.getElementById('main-ui').style.display = 'none';
+            document.getElementById('streamlit-ui').style.display = 'flex';
+        }
+
+        function goBack() {
+            document.getElementById('streamlit-ui').style.display = 'none';
+            document.getElementById('main-ui').style.display = 'block';
+        }
     </script>
+    
+    <!-- Optional JS -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>

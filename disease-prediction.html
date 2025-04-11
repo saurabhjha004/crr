@@ -76,6 +76,7 @@
             cursor: pointer;
             border-radius: 5px;
             width: 100%;
+            font-size: 16px;
         }
 
         button:hover {
@@ -86,41 +87,17 @@
             margin-top: 15px;
             font-weight: bold;
         }
-
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-        }
-
-        #streamlit-ui {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            z-index: 1;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 800px;
-        }
-
-        #streamlit-ui button {
-            margin-top: 15px;
-            width: auto;
-        }
     </style>
 </head>
 <body>
     <!-- Animated Background -->
     <div class="animated-bg"></div>
-    
+
     <!-- Floating Leaves -->
     <div class="leaf" style="top: 10%; left: 20%;"></div>
     <div class="leaf" style="top: 30%; left: 60%;"></div>
     <div class="leaf" style="top: 50%; left: 40%;"></div>
-    
+
     <!-- Growing Plant -->
     <div class="plant"></div>
 
@@ -128,14 +105,10 @@
     <div class="container" id="main-ui">
         <h2>Disease Prediction</h2>
         <input type="file" id="file-upload" accept="image/*">
-        <button onclick="showStreamlit()">Predict Disease</button>
+        <a href="https://crop-disease-detection.streamlit.app" target="_blank">
+            <button>Predict Disease</button>
+        </a>
         <div id="prediction-result"></div>
-    </div>
-
-    <!-- Streamlit Iframe -->
-    <div id="streamlit-ui">
-        <iframe src="https://huggingface.co/spaces/saurabh004/disease-predictor"></iframe>
-        <button onclick="goBack()">🔙 Back</button>
     </div>
 
     <!-- Animations -->
@@ -160,18 +133,8 @@
             duration: 3000,
             easing: 'easeInOutSine'
         });
-
-        function showStreamlit() {
-            document.getElementById('main-ui').style.display = 'none';
-            document.getElementById('streamlit-ui').style.display = 'flex';
-        }
-
-        function goBack() {
-            document.getElementById('streamlit-ui').style.display = 'none';
-            document.getElementById('main-ui').style.display = 'block';
-        }
     </script>
-    
+
     <!-- Optional JS -->
     <script src="assets/js/main.js"></script>
 </body>

@@ -368,6 +368,8 @@ header {
 /*Opportunities*/
 .opportunities {
   position: relative;
+  min-width: 300px; /* adjust as needed */
+  flex-shrink: 0; /* prevents the card from shrinking */
 }
 
 .opportunities__img {
@@ -412,10 +414,17 @@ header {
 
 .opportunities__body {
   display: flex;
-  flex-wrap: wrap;
-  grid-gap: 5.5rem;
-  align-self: center;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap; /* prevent wrapping to new lines */
+  gap: 2rem; /* optional: space between cards */
+  overflow-x: auto; /* optional: horizontal scroll if screen is too small */
+}
+.opportunities__body::-webkit-scrollbar {
+  height: 8px;
+}
+.opportunities__body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
 }
 
 .opportunity {

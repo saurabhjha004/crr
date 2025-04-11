@@ -51,41 +51,40 @@
 
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             text-align: center;
             width: 400px;
             position: relative;
             z-index: 1;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
 
         button {
             background-color: #28a745;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 24px;
             border: none;
-            cursor: pointer;
-            border-radius: 5px;
+            border-radius: 6px;
             width: 100%;
             font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
             background-color: #218838;
-        }
-
-        #prediction-result {
-            margin-top: 15px;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -101,17 +100,16 @@
     <!-- Growing Plant -->
     <div class="plant"></div>
 
-    <!-- Main UI -->
+    <!-- Main Container -->
     <div class="container" id="main-ui">
-        <h2>Disease Prediction</h2>
-        <input type="file" id="file-upload" accept="image/*">
+        <h2>Plant Disease Prediction</h2>
+        <p>Upload a leaf image to detect potential plant diseases.</p>
         <a href="https://crop-disease-detection.streamlit.app" target="_self">
             <button>Predict Disease</button>
         </a>
-        <div id="prediction-result"></div>
     </div>
 
-    <!-- Animations -->
+    <!-- Leaf and Plant Animations -->
     <script>
         document.querySelectorAll('.leaf').forEach(leaf => {
             anime({

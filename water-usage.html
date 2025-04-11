@@ -43,39 +43,63 @@
 
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             text-align: center;
+            z-index: 1;
         }
 
         h2 {
             color: #1E40AF;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 20px;
+            font-size: 18px;
             color: #555;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2563EB;
         }
     </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    <div class="container">
-        <h2>💧 Water Usage Prediction</h2>
-        <p>🚧 Under Construction 🚧</p>
+
+    <div class="animated-bg">
+        <!-- Generate multiple raindrops -->
+        <script>
+            for (let i = 0; i < 50; i++) {
+                let drop = document.createElement('div');
+                drop.classList.add('raindrop');
+                drop.style.left = Math.random() * 100 + 'vw';
+                drop.style.animationDuration = (2 + Math.random() * 2) + 's';
+                drop.style.animationDelay = Math.random() + 's';
+                document.body.appendChild(drop);
+            }
+        </script>
     </div>
-    <script>
-        function createRaindrop() {
-            let drop = document.createElement("div");
-            drop.classList.add("raindrop");
-            drop.style.left = Math.random() * window.innerWidth + "px";
-            drop.style.animationDuration = (2 + Math.random() * 3) + "s";
-            document.body.appendChild(drop);
-            setTimeout(() => { drop.remove(); }, 3000);
-        }
-        
-        setInterval(createRaindrop, 300);
-    </script>
+
+    <div class="container">
+        <h2>Water Usage Prediction</h2>
+        <p>Click below to analyze and predict water consumption</p>
+        <a href="https://water-usage-crr.streamlit.app/" target="_self">
+            <button>Predict Usage</button>
+        </a>
+    </div>
+
 </body>
 </html>

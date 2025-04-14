@@ -75,17 +75,14 @@ header {
 }
 
 .header__nav {
-  /* padding: 2rem 1.5rem;
-  margin: auto;
-  display: flex;
-  align-items: center; */
-
   padding: 2rem 1.5rem;
   display: flex;
   align-items: center;
-  margin-left: 103px;
+  justify-content: space-between; /* Changed from margin-left: 103px */
+  width: 100%; /* Ensure full width */
+  max-width: 1400px; /* Or whatever max width you want */
+  margin: 0 auto; /* Center the nav */
 }
-
 .header__logo {
   flex: 3;
 }
